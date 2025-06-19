@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import Toy
 
-# Register your models here.
+@admin.register(Toy)
+class ToyAdmin(admin.ModelAdmin):
+    list_display = ('name', 'price', 'available', 'created_at')
+    list_filter = ('available',)
+    search_fields = ('name', 'description')
+
